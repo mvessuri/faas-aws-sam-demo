@@ -1,0 +1,9 @@
+{
+  "version": "2.0",
+  "routeKey": "GET /hello",
+  "rawPath": "/hello",
+  "rawQueryString": "name=FaaS",
+  "queryStringParameters": { "name": "FaaS" },
+  "requestContext": { "http": { "method": "GET", "path": "/hello" } },
+  "isBase64Encoded": false
+}
