@@ -1,0 +1,9 @@
+{
+  "version": "2.0",
+  "routeKey": "GET /time/{city}",
+  "rawPath": "/time/tokyo",
+  "rawQueryString": "",
+  "pathParameters": { "city": "tokyo" },
+  "requestContext": { "http": { "method": "GET", "path": "/time/tokyo" } },
+  "isBase64Encoded": false
+}

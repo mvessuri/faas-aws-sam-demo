@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
-Description: FaaS demo - a single Lambda function behind an HTTP API
+Description: FaaS demo - Lambda functions behind an HTTP API
 
 Globals:
   Function:
@@ -22,7 +22,25 @@ Resources:
             Path: /hello
             Method: GET
 
+  WorldClockFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: clock.handler
+      Environment:
+        Variables:
+          HOME_TIMEZONE: America/Argentina/Buenos_Aires
+      Events:
+        Time:
+          Type: HttpApi
+          Properties:
+            Path: /time/{city}
+            Method: GET
+
 Outputs:
   HelloUrl:
     Description: Call this URL to invoke the function
     Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/hello"
+  WorldClockUrl:
+    Description: Replace tokyo with any supported city
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/time/tokyo"
